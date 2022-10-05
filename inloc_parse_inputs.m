@@ -1,11 +1,11 @@
 function [params] = inloc_parse_inputs(varargin)
     parser = inputParser;
-    addRequired(parser, 'config');
-    addOptional(parser, 'config_section', '');
+    addRequired(parser, 'params_file');
+    addOptional(parser, 'experiment_name', '');
     parse(parser, varargin{:});
 
-    params = ReadYaml(parser.Results.config);
-    if parser.Results.config_section ~= ""
-        params = params.(parser.Results.config_section);
+    params = ReadYaml(parser.Results.params_file);
+    if parser.Results.experiment_name ~= ""
+        params = params.(parser.Results.experiment_name);
     end
 end
